@@ -2,21 +2,34 @@
 
 :root 
 {
-    --main-bg: #E5E7EB;
+    --main-bg: #F1F3F4;
     --chatbox-bg: #FFFFFF;
     --secondary-bg: #F3F4F6;
     --font: "JetBrains Mono"; 
     --txt-color: #1F2937;
+    --txt-color-s: #7D7D7D;
+    --txt-color-s-2: #2B2E48;
+    --border-color: #E3E5E7;
     --txt-size: 0.875rem;
     --txt-size-s: 0.75rem;
     --hdr-w:320px;
-    --hdr-h:32px;
+    --hdr-h:36px;
     --chatbox-w:320px;
     --msg-w: 288px;
     --pad-xs: 4px;
     --pad-s: 8px;
     --pad-m: 10px;
+    --pad-l: 12px;
     --pad-xl: 14px;
+}
+:root.dark {
+    --main-bg: #141414;
+    --chatbox-bg: #0F0F0F;
+    --secondary-bg: #1A1A1A;
+    --txt-color: #DBB2FF;
+    --txt-color-s: #BFBFBF;
+    --txt-color-s-2: #BB86FC;
+    --border-color: #191D23;
 }
 
 .box-container 
@@ -39,11 +52,11 @@
     background: var(--main-bg);
     width: var(--hdr-w);
     height: var(--hdr-h);
-    padding: var(--pad-m) var(--pad-xl);
+    padding: var(--pad-xl);
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border:1px solid var(--main-bg);
+    /* border:1px solid var(--border-color); */
     font-weight: 700;
 }
 
@@ -71,13 +84,18 @@
     padding: var(--pad-xs);
     font-size: var(--txt-size-s);
     font-weight: 700;
+    color: var(--txt-color-s-2);
+    letter-spacing: 0.025em;
+    /* text-transform: none; */
 }
 .message{
     background: var(--secondary-bg);
     width: var(--msg-w);
-    padding: var(--pad-s);
+    padding: var(--pad-l);
     line-height: 1.5;
     font-weight: 400;
     overflow-wrap: anywhere;
-
+    color: var(--txt-color-s);
+    
+    /* border:1px solid var(--border-color); */
 }

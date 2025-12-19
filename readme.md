@@ -9,6 +9,7 @@ A lightweight, custom Twitch chat overlay designed for OBS Browser Source integr
 ## ✨ Features
 
 - **Live Twitch Chat** — Real-time chat display from any Twitch channel
+- **Dark Mode** — Purple-accented dark theme with URL parameter control and system preference detection
 - **Auto-scroll** — Messages automatically managed to fit viewport
 - **Uppercase Transform** — All text displayed in uppercase for visual consistency
 - **Clean Design** — Minimalist monospace aesthetic with JetBrains Mono font
@@ -83,6 +84,86 @@ twitch-chatbox/
 - `overflow-wrap: anywhere` handles long words/URLs gracefully
 - Viewport units (`vh`) are perfect for full-height layouts
 
+### Understanding `:root`
+
+The `:root` pseudo-class selects the document's root element — in HTML, that's `<html>`. While commonly used for CSS custom properties (variables), it's a general-purpose selector that accepts any CSS property.
+
+**Key insights:**
+
+- `:root` and `html` select the same element, but `:root` has higher specificity
+- Custom properties defined on `:root` cascade down to all descendants automatically
+- The `rem` unit is relative to `:root`'s font-size — setting `font-size` on `:root` creates a scalable foundation for the entire design
+- In JavaScript, access `:root` via `document.documentElement` (a built-in shortcut to `<html>`)
+
+**Theme switching pattern:**
+
+```css
+:root {
+  --bg: white;
+} /* Default theme */
+:root.dark {
+  --bg: #111;
+} /* Active when <html class="dark"> */
+```
+
+```javascript
+// Toggle dark mode
+document.documentElement.classList.add("dark");
+```
+
+This works because adding a class to `<html>` triggers the `:root.dark` selector, which overrides the CSS variables — and those new values cascade to every element using them.
+
+### URL Parameters & `window.location`
+
+URL parameters (query strings) allow passing configuration to a page through the URL itself — no code changes required. This is ideal for OBS Browser Sources where you want different settings without maintaining multiple files.
+
+**URL anatomy:**
+
+```
+https://example.com/page.html?theme=dark&volume=50
+└─────── origin ──────┘└ path ┘└─── search (query) ───┘
+```
+
+**The `window.location` object** provides access to the current URL's components:
+
+| Property                   | Example Value                              | Description                     |
+| -------------------------- | ------------------------------------------ | ------------------------------- |
+| `window.location.href`     | `https://example.com/page.html?theme=dark` | Full URL                        |
+| `window.location.origin`   | `https://example.com`                      | Protocol + hostname + port      |
+| `window.location.protocol` | `https:`                                   | Protocol (http: or https:)      |
+| `window.location.hostname` | `example.com`                              | Domain name                     |
+| `window.location.pathname` | `/page.html`                               | Path after domain               |
+| `window.location.search`   | `?theme=dark`                              | Query string (including `?`)    |
+| `window.location.hash`     | `#section`                                 | Fragment identifier (after `#`) |
+
+**Reading parameters in JavaScript:**
+
+```javascript
+// URL: index.html?theme=dark
+const params = window.location.search; // "?theme=dark"
+
+// Simple check
+if (params.includes("theme=dark")) {
+  // activate dark mode
+}
+```
+
+### Detecting System Preferences
+
+The `window.matchMedia()` API queries browser/OS settings like dark mode preference:
+
+```javascript
+// Returns true if system is in dark mode
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+```
+
+**Priority pattern for theme selection:**
+
+1. URL parameter (explicit user choice) → highest priority
+2. System/browser preference → fallback when no parameter specified
+
+Note: Browser appearance settings can override OS settings — `prefers-color-scheme` reports what the browser decides, which may come from its own settings or the OS.
+
 ### DOM Manipulation
 
 - Dynamic element creation with `createElement()` and `appendChild()`
@@ -99,43 +180,51 @@ twitch-chatbox/
 
 ## ⚙️ Configuration
 
+### Theme Selection
+
+Control the theme via URL parameter or let it follow system preference:
+
+| URL                      | Behavior                               |
+| ------------------------ | -------------------------------------- |
+| `index.html`             | Auto-detects system/browser preference |
+| `index.html?theme=dark`  | Forces dark mode                       |
+| `index.html?theme=light` | Forces light mode                      |
+
+**For OBS:** Uncheck "Local file" in Browser Source settings and enter the full path with your desired parameter:
+
+```
+file:///path/to/twitch-chatbox/index.html?theme=dark
+```
+
 ### CSS Variables
 
 All styling can be customized via CSS variables in `style.css`:
 
 ```css
+/* Light theme (default) */
 :root {
-  --main-bg: #e5e7eb; /* Header & border color */
-  --chatbox-bg: #ffffff; /* Main background */
-  --secondary-bg: #f3f4f6; /* Message bubble background */
-  --font: "JetBrains Mono"; /* Font family */
-  --txt-color: #1f2937; /* Text color */
-  --txt-size: 0.875rem; /* Base font size */
-  --txt-size-s: 0.75rem; /* Small font size (username) */
-  --chatbox-w: 320px; /* Chatbox width */
-  --hdr-h: 32px; /* Header height */
+  --main-bg: #f1f3f4;
+  --chatbox-bg: #ffffff;
+  --secondary-bg: #f3f4f6;
+  --txt-color: #1f2937;
+  --txt-color-s: #7d7d7d;
+  --txt-color-s-2: #2b2e48;
+}
+
+/* Dark theme */
+:root.dark {
+  --main-bg: #141414;
+  --chatbox-bg: #0f0f0f;
+  --secondary-bg: #1a1a1a;
+  --txt-color: #dbb2ff;
+  --txt-color-s: #bfbfbf;
+  --txt-color-s-2: #bb86fc;
 }
 ```
 
 ---
 
 ## 🔮 Future Features & Improvements
-
-### 🌙 Dark Theme
-
-- Add dark mode color scheme
-- Consider auto-detect based on system preference
-- Toggle via URL parameter for OBS flexibility
-
-```css
-/* Planned dark theme variables */
-:root.dark {
-  --main-bg: #1f2937;
-  --chatbox-bg: #111827;
-  --secondary-bg: #374151;
-  --txt-color: #f9fafb;
-}
-```
 
 ### ✨ Animations
 

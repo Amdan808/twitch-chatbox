@@ -84,4 +84,33 @@ function limitMessage()
    
 }
 
- connect(); 
+
+function setTheme()
+{
+const url = window.location.search;
+if (url.includes('theme=dark'))
+    {
+        document.documentElement.classList.add('dark');
+        console.log('Dark theme active');
+    }
+else if (url.includes('theme=light'))
+    {   
+    document.documentElement.classList.remove('dark')
+    console.log('Light theme active');  
+    }
+else 
+    {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+    {
+        document.documentElement.classList.add('dark');
+        console.log('System preference — Dark theme active');
+    } 
+    else
+        {
+        document.documentElement.classList.remove('dark')
+        console.log('System preference — Light theme active');  
+        }
+    }   
+}
+setTheme()
+connect(); 
