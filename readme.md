@@ -333,6 +333,7 @@ MIT License — feel free to use, modify, and share.
 
 ## 🙏 Acknowledgments
 
+- **Cathy** — Inspired this project! Check out her work: [Twitch](https://twitch.tv/katy_v4) | [GitHub](https://github.com/CathyDolle)
 - [Twitch IRC Documentation](https://dev.twitch.tv/docs/irc)
 - [JetBrains Mono Font](https://www.jetbrains.com/lp/mono/)
 - Built with vanilla HTML, CSS, and JavaScript
