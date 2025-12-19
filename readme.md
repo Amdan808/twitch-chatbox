@@ -165,13 +165,13 @@ All styling can be customized via CSS variables in `style.css`:
 
 Different visual treatment based on user type:
 
-| User Type       | Styling Ideas                   |
-| --------------- | ------------------------------- | ---------------- |
-| **VIP**         | Gold username, special icon     | Custom Animation |
-| **Subscriber**  | Purple accent, sub badge        |
-| **Moderator**   | Green highlight, mod badge      |
-| **Broadcaster** | Red accent, crown icon          |
-| **Power Users** | Custom colors based on activity |
+| User Type       | Styling Ideas                   | Animation                        |
+| --------------- | ------------------------------- | -------------------------------- |
+| **VIP**         | Gold username, special icon     | ✨ Shimmer/glow effect on entry  |
+| **Subscriber**  | Purple accent, sub badge        | 💫 Gentle pulse on username      |
+| **Moderator**   | Green highlight, mod badge      | Standard fade-in                 |
+| **Broadcaster** | Red accent, crown icon          | 🔥 Special entrance animation    |
+| **Power Users** | Custom colors based on activity | 🌊 Rainbow wave / gradient shift |
 
 **Implementation:** Parse Twitch IRC tags for user metadata:
 
