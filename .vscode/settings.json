@@ -1,0 +1,17 @@
+{
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.inlineSuggest.enabled": false,
+  "editor.wordBasedSuggestions": "off",
+  "editor.tabCompletion": "off",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": false,
+  "editor.fontWeight": "normal",
+  "editor.inlineSuggest.syntaxHighlightingEnabled": false,
+  "liveServer.settings.port": 5502
+}

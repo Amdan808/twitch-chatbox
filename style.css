@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&f&display=swap');
+
+:root 
+{
+    --main-bg: #E5E7EB;
+    --chatbox-bg: #FFFFFF;
+    --secondary-bg: #F3F4F6;
+    --font: "JetBrains Mono"; 
+    --txt-color: #1F2937;
+    --txt-size: 0.875rem;
+    --txt-size-s: 0.75rem;
+    --hdr-w:320px;
+    --hdr-h:32px;
+    --chatbox-w:320px;
+    --msg-w: 288px;
+    --pad-xs: 4px;
+    --pad-s: 8px;
+    --pad-m: 10px;
+    --pad-xl: 14px;
+}
+
+.box-container 
+{
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+    background-color: var(--chatbox-bg);
+    font-family: var(--font), monospace;
+    font-size: var(--txt-size);
+    color: var(--txt-color);
+    text-transform: uppercase;
+    
+}
+
+
+.chat-header 
+{
+
+    background: var(--main-bg);
+    width: var(--hdr-w);
+    height: var(--hdr-h);
+    padding: var(--pad-m) var(--pad-xl);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border:1px solid var(--main-bg);
+    font-weight: 700;
+}
+
+.chat-container
+{
+    display:flex;
+    flex-flow: column nowrap;
+    width:var(--chatbox-w);
+    flex-grow: 1;
+    padding:var(--pad-xl) var(--pad-m);
+    gap:var(--pad-m);
+    border:1px solid var(--main-bg);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.message-box
+{
+    display:flex;
+    flex-flow:column nowrap;
+    padding: var(--pad-xs);
+}
+
+.username {
+    padding: var(--pad-xs);
+    font-size: var(--txt-size-s);
+    font-weight: 700;
+}
+.message{
+    background: var(--secondary-bg);
+    width: var(--msg-w);
+    padding: var(--pad-s);
+    line-height: 1.5;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+
+}
