@@ -21,7 +21,7 @@ A lightweight, custom Twitch chat overlay designed for OBS Browser Source integr
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/twitch-chatbox.git
+git clone https://github.com/dirtex808/twitch-chatbox.git
 cd twitch-chatbox
 ```
 
