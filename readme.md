@@ -33,7 +33,7 @@ Open `script.js` and change the channel name on **line 16**:
 socket.send("JOIN #YOUR_CHANNEL_NAME");
 ```
 
-Replace `YOUR_CHANNEL_NAME` with the Twitch channel you want to display (without the `#`).
+Replace `YOUR_CHANNEL_NAME` with the Twitch channel you want to display (Keep the `#`).
 
 ### 3. Add to OBS
 
