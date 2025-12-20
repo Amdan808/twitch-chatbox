@@ -46,7 +46,6 @@ function connect()  {
    
 }
 
-
 function parseMessage(messageStr)
 {
     const command = messageStr.substring(messageStr.indexOf('#'));
@@ -76,12 +75,14 @@ function renderMessage(message, username){
 function limitMessage()
 {
     const $chatContainer = document.querySelector('.chat-container');
-     
+    console.log(`Before loop: scrollHeight: ${$chatContainer.scrollHeight}, clientHeight: ${$chatContainer.clientHeight}`);
     while($chatContainer.scrollHeight > $chatContainer.clientHeight)
-        {
-            $chatContainer.firstElementChild.remove()
+        {  
+        $chatContainer.firstElementChild.remove();
+        
+        console.log(`After loop: scrollHeight: ${$chatContainer.scrollHeight}, clientHeight: ${$chatContainer.clientHeight}`);
         }
-   
+  
 }
 
 
