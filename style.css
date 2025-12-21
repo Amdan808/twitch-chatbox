@@ -41,7 +41,7 @@
     font-family: var(--font), monospace;
     font-size: var(--txt-size);
     color: var(--txt-color);
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
 }
 
 
