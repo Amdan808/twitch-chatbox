@@ -271,6 +271,7 @@ Different visual treatment based on user type:
 
 ### 📋 Other Ideas
 
+- [ ] Multi-chat support (TikTok, Kick, Youtube)
 - [ ] Emote support (Twitch, BTTV, FFZ, 7TV)
 - [ ] URL parameter for channel selection
 - [ ] Message timestamps
@@ -309,6 +310,8 @@ This overlay runs entirely client-side. No backend, no API keys, no authenticati
 - Refresh HTML, CSS, and JavaScript skills
 - Practice translating a Figma design into working code
 - Evaluate the Figma → HTML/CSS/JS workflow
+- Implement cross-platform chat integrattion
+- Manage user database -> username | status -> custom styling
 
 ### Constraints
 

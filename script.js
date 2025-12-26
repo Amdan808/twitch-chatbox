@@ -13,7 +13,7 @@ function connect()  {
         console.log('Connected to Twitch IRC');
         socket.send('PASS oauth:');
         socket.send('NICK justinfan123');
-        socket.send('JOIN #humzh');
+        socket.send('JOIN #dirtex808');
         
     };
     
